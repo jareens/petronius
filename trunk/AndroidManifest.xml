@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="org.dyndns.ipignoli.petronius" android:versionCode="1"
+  android:versionName="1.0">
+
+  <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="11" />
+
+  <supports-screens android:anyDensity="true"
+    android:largeScreens="false" android:smallScreens="true"
+    android:xlargeScreens="false" />
+
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+  <application android:label="@string/app_name" android:icon="@drawable/ic_launcher_petronius">
+    <activity android:name=".Petronius" android:label="@string/app_name">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:name="ClothesChooser"></activity>
+    <activity android:name="ClothesList"></activity>
+    <activity android:name="HistoryList"></activity>
+    <activity android:name="CompatibilityList"></activity>
+    <activity android:name="EditGarment"></activity>
+    <activity android:name="EditHistoryRecord"></activity>
+    <activity android:name="EditCompatibility"></activity>
+    <activity android:name="ManageArchive"></activity>
+    <activity android:name="SaveArchive"></activity>
+    <activity android:name="ClothesListPicker"></activity>
+    <activity android:name="ChosenClothesListPicker"></activity>
+    <activity android:name="ClothesChoice"></activity>
+    <activity android:name="ChosenClothesPicker"></activity>
+    <activity android:name="ChosenGarmentView"></activity>
+    <activity android:name="SaveHistory"></activity>
+    <activity android:name="Help"></activity>
+  </application>
+</manifest>

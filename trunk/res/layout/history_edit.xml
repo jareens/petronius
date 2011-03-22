@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent" android:layout_height="fill_parent"
+  android:orientation="vertical">
+  <LinearLayout android:focusable="true"
+    android:focusableInTouchMode="true" android:layout_width="0px"
+    android:layout_height="0px" />
+  <ScrollView android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+    <LinearLayout android:orientation="vertical"
+      android:layout_width="fill_parent" android:layout_height="fill_parent">
+      <DatePicker android:id="@+id/edit_history_record_date"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"></DatePicker>
+      <Button android:id="@+id/edit_history_record_garment" android:text="@string/pick_garment"
+        android:layout_height="wrap_content" android:layout_width="fill_parent"></Button>
+      <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+        <Button android:id="@+id/edit_history_record_cancel"
+          android:text="@string/cancel" android:layout_weight="1"
+          android:layout_height="wrap_content" android:layout_width="fill_parent"></Button>
+        <Button android:layout_height="wrap_content" android:id="@+id/edit_history_record_ok"
+          android:text="@string/ok" android:layout_weight="1"
+          android:layout_width="fill_parent"></Button>
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

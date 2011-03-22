@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:title="@string/save_archive" android:id="@+id/save_archive"
+    android:icon="@android:drawable/ic_menu_save" android:orderInCategory="1"></item>
+  <item android:title="@string/help" android:id="@+id/manage_archive_help"
+    android:icon="@android:drawable/ic_menu_help" android:orderInCategory="2"></item>
+</menu>

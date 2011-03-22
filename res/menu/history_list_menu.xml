@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:title="@string/new_history_record" android:id="@+id/new_history_record"
+    android:icon="@android:drawable/ic_menu_add" android:orderInCategory="1"></item>
+  <item android:title="@string/help" android:id="@+id/history_list_help"
+    android:icon="@android:drawable/ic_menu_help" android:orderInCategory="2"></item>
+</menu>

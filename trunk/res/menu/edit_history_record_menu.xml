@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:title="@string/edit_history_record" android:id="@+id/edit_history_record"
-    android:icon="@android:drawable/ic_menu_edit" android:orderInCategory="1"></item>
-  <item android:title="@string/delete_history_record" android:id="@+id/delete_history_record"
-    android:icon="@android:drawable/ic_menu_delete" android:orderInCategory="2"></item>
-  <item android:title="@string/help" android:id="@+id/edit_history_record_help"
-    android:icon="@android:drawable/ic_menu_help" android:orderInCategory="3"></item>
-</menu>

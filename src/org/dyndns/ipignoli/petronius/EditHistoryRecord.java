@@ -175,7 +175,8 @@ public class EditHistoryRecord extends Activity{
       case R.id.edit_history_record_help:
         Intent helpIntent = new Intent(this, Help.class);
 
-        CommonStore.getInstance().put(CommonStore.HELP_PAGE, R.raw.edit_history_record_help);
+        CommonStore.getInstance().put(CommonStore.HELP_PAGE,
+            R.raw.edit_history_record_help);
 
         startActivity(helpIntent);
         return true;
@@ -204,6 +205,7 @@ public class EditHistoryRecord extends Activity{
   @Override
   public void finish(){
     ended = true;
+    clearState();
     super.finish();
   }
 
@@ -227,6 +229,12 @@ public class EditHistoryRecord extends Activity{
     editable =
         (Boolean)CommonStore.getInstance().get(
             CommonStore.EDIT_HISTORY_RECORD_EDITABLE);
+  }
+
+  private void clearState(){
+    CommonStore.getInstance().remove(
+        CommonStore.EDIT_HISTORY_RECORD_HISTORY_RECORD);
+    CommonStore.getInstance().remove(CommonStore.EDIT_HISTORY_RECORD_EDITABLE);
   }
 
   private void saveHistoryRecord(){
@@ -274,10 +282,6 @@ public class EditHistoryRecord extends Activity{
   }
 
   private void endMe(int result){
-    CommonStore.getInstance().remove(
-        CommonStore.EDIT_HISTORY_RECORD_HISTORY_RECORD);
-    CommonStore.getInstance().remove(CommonStore.EDIT_HISTORY_RECORD_EDITABLE);
-
     setResult(result);
     finish();
   }
@@ -318,8 +322,7 @@ public class EditHistoryRecord extends Activity{
         }
       }).execute(historyRecord.getGarmentId());
     else
-      buttonGarment.setText(getResources().getString(
-          R.string.pick_garment));
+      buttonGarment.setText(getResources().getString(R.string.pick_garment));
     enableSelectors(editable);
   }
 

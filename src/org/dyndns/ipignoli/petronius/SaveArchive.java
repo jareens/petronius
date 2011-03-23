@@ -140,6 +140,13 @@ public class SaveArchive extends Activity{
     return super.onMenuItemSelected(featureId, item);
   }
 
+  @Override
+  public void finish(){
+    ended = true;
+    clearState();
+    super.finish();
+  }
+
   private void saveState(){
     CommonStore.getInstance().put(CommonStore.SAVE_ARCHIVE_SAVE_FILE,
         editFileName.getText().toString());
@@ -155,6 +162,10 @@ public class SaveArchive extends Activity{
 
     editFileName.setText(saveFile.getName().substring(0,
         saveFile.getName().length() - 4));
+  }
+
+  private void clearState(){
+    CommonStore.getInstance().remove(CommonStore.SAVE_ARCHIVE_SAVE_FILE);
   }
 
   private void saveArchive(){
@@ -182,10 +193,10 @@ public class SaveArchive extends Activity{
           }).setNegativeButton(R.string.cancel, null).show();
       return;
     }
-    
+
     reallySaveArchive();
   }
-  
+
   void reallySaveArchive(){
     new ArchiveSave(this, new ArchiveSave.EndTaskListener<Boolean>(){
       @Override
@@ -209,9 +220,6 @@ public class SaveArchive extends Activity{
   }
 
   protected void endMe(int result){
-    CommonStore.getInstance().remove(CommonStore.SAVE_ARCHIVE_SAVE_FILE);
-    ended = true;
-
     setResult(result);
     finish();
   }

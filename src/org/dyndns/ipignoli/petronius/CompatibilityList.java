@@ -179,9 +179,8 @@ public class CompatibilityList extends ListActivity{
 
   @Override
   public void finish(){
-    CommonStore.getInstance().remove(
-        CommonStore.COMPATIBILITY_LIST_GARMENT_ID_1);
     ended = true;
+    clearState();
     super.finish();
   }
 
@@ -195,6 +194,12 @@ public class CompatibilityList extends ListActivity{
         (Long)CommonStore.getInstance().get(
             CommonStore.COMPATIBILITY_LIST_GARMENT_ID_1);
     filter.setGarmentId(garmentId);
+  }
+
+  private void clearState(){
+    CommonStore.getInstance().remove(
+        CommonStore.COMPATIBILITY_LIST_GARMENT_ID_1);
+
   }
 
   private SimpleCursorAdapter getCursorAdapter(Cursor cursor){

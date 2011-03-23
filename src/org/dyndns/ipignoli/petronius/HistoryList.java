@@ -203,7 +203,6 @@ public class HistoryList extends ListActivity{
   public void finish(){
     CommonStore.getInstance().remove(CommonStore.HISTORY_LIST_GARMENT_ID);
     ended=true;
-    
     super.finish();
   }
 

@@ -204,13 +204,21 @@ public class EditGarment extends Activity{
       case R.id.edit_garment_help:
         Intent helpIntent = new Intent(this, Help.class);
 
-        CommonStore.getInstance().put(CommonStore.HELP_PAGE, R.raw.edit_garment_help);
+        CommonStore.getInstance().put(CommonStore.HELP_PAGE,
+            R.raw.edit_garment_help);
 
         startActivity(helpIntent);
         return true;
     }
 
     return super.onMenuItemSelected(featureId, item);
+  }
+
+  @Override
+  public void finish(){
+    ended = true;
+    clearState();
+    super.finish();
   }
 
   private void saveState(){
@@ -232,12 +240,6 @@ public class EditGarment extends Activity{
     CommonStore.getInstance().put(CommonStore.EDIT_GARMENT_EDITABLE, editable);
   }
 
-  @Override
-  public void finish(){
-    ended = true;
-    super.finish();
-  }
-
   private void restoreState(){
     if(CommonStore.getInstance().containsKey(CommonStore.EDIT_GARMENT_GARMENT))
       garment =
@@ -247,6 +249,11 @@ public class EditGarment extends Activity{
     editable =
         (Boolean)CommonStore.getInstance().get(
             CommonStore.EDIT_GARMENT_EDITABLE);
+  }
+
+  private void clearState(){
+    CommonStore.getInstance().remove(CommonStore.EDIT_GARMENT_GARMENT);
+    CommonStore.getInstance().remove(CommonStore.EDIT_GARMENT_EDITABLE);
   }
 
   private void saveGarment(){
@@ -292,9 +299,6 @@ public class EditGarment extends Activity{
   }
 
   private void endMe(int result){
-    CommonStore.getInstance().remove(CommonStore.EDIT_GARMENT_GARMENT);
-    CommonStore.getInstance().remove(CommonStore.EDIT_GARMENT_EDITABLE);
-
     setResult(result);
     finish();
   }

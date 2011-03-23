@@ -269,9 +269,17 @@ public class ClothesChoice extends ListActivity{
     return;
   }
 
-  private void endMe(int result){
-    CommonStore.getInstance().remove(CommonStore.CLOTHES_CHOOSER_CHOOSER);
+  @Override
+  public void finish(){
+    clearState();
+    super.finish();
+  }
 
+  private void clearState(){
+    CommonStore.getInstance().remove(CommonStore.CLOTHES_CHOOSER_CHOOSER);
+  }
+
+  private void endMe(int result){
     setResult(result);
     finish();
   }

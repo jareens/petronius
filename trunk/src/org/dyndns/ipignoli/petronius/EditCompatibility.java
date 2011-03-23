@@ -186,7 +186,8 @@ public class EditCompatibility extends Activity{
       case R.id.edit_compatibility_help:
         Intent helpIntent = new Intent(this, Help.class);
 
-        CommonStore.getInstance().put(CommonStore.HELP_PAGE, R.raw.edit_compatibility_help);
+        CommonStore.getInstance().put(CommonStore.HELP_PAGE,
+            R.raw.edit_compatibility_help);
 
         startActivity(helpIntent);
         return true;
@@ -220,6 +221,7 @@ public class EditCompatibility extends Activity{
   @Override
   public void finish(){
     ended = true;
+    clearState();
     super.finish();
   }
 
@@ -242,6 +244,12 @@ public class EditCompatibility extends Activity{
     editable =
         (Boolean)CommonStore.getInstance().get(
             CommonStore.EDIT_COMPATIBILITY_EDITABLE);
+  }
+
+  private void clearState(){
+    CommonStore.getInstance().remove(
+        CommonStore.EDIT_COMPATIBILITY_COMPATIBILITY);
+    CommonStore.getInstance().remove(CommonStore.EDIT_COMPATIBILITY_EDITABLE);
   }
 
   private void saveCompatibility(){
@@ -289,10 +297,6 @@ public class EditCompatibility extends Activity{
   }
 
   private void endMe(int result){
-    CommonStore.getInstance().remove(
-        CommonStore.EDIT_COMPATIBILITY_COMPATIBILITY);
-    CommonStore.getInstance().remove(CommonStore.EDIT_COMPATIBILITY_EDITABLE);
-
     setResult(result);
     finish();
   }

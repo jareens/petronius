@@ -152,6 +152,13 @@ public class SaveHistory extends ListActivity{
     CommonStore.getInstance().put(CommonStore.SAVE_HISTORY_CHECKED, checked);
   }
 
+  @Override
+  public void finish(){
+    ended = true;
+    clearState();
+    super.finish();
+  }
+
   private void restoreState(){
     chooser =
         (Chooser[])CommonStore.getInstance().get(
@@ -174,11 +181,12 @@ public class SaveHistory extends ListActivity{
     }
   }
 
-  private void endMe(int result){
+  private void clearState(){
     CommonStore.getInstance().remove(CommonStore.SAVE_HISTORY_CHOICE_DATE);
     CommonStore.getInstance().remove(CommonStore.SAVE_HISTORY_CHECKED);
-    ended = true;
+  }
 
+  private void endMe(int result){
     setResult(result);
     finish();
   }

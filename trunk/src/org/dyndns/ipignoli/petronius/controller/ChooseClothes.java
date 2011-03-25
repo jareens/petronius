@@ -22,8 +22,8 @@
 
 package org.dyndns.ipignoli.petronius.controller;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import org.dyndns.ipignoli.petronius.R;
 import org.dyndns.ipignoli.petronius.choice.ChoiceOptions;
@@ -39,7 +39,8 @@ public class ChooseClothes extends
 
   private MyHelper dbHelper;
 
-  public ChooseClothes(Activity activity, EndTaskListener<List<Chooser>> callback){
+  public ChooseClothes(Activity activity,
+      EndTaskListener<List<Chooser>> callback){
     super(activity.getResources().getString(R.string.clothes_choice), activity,
         callback);
     dbHelper = new MyHelper(activity);
@@ -48,7 +49,9 @@ public class ChooseClothes extends
 
   @Override
   protected List<Chooser> doTheWork(ChoiceOptions... options) throws Exception{
-    List<Chooser> chosen=new LinkedList<Chooser>();
+    List<Chooser> chosen =
+        new ArrayList<Chooser>(Types.getInstance().getTotSet(
+            options[0].getGarmentTypes()));
 
     progressDialog.setMax(Types.getInstance().getTotSet(
         options[0].getGarmentTypes()));

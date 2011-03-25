@@ -26,7 +26,6 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import org.dyndns.ipignoli.petronius.clothes.Garment;
-import org.dyndns.ipignoli.petronius.clothes.Types;
 import org.dyndns.ipignoli.petronius.db.MyHelper;
 import android.content.res.Resources;
 
@@ -72,13 +71,15 @@ public class ChosenGarment implements Comparable<ChosenGarment>{
     return compatibility;
   }
 
-  public void updateCompatibility(Chooser[] chosen, List<Score> scores){
-    Garment[] clothes = new Garment[Types.getInstance().getTotTypes()];
+  public void updateCompatibility(List<Chooser> chosen, List<Score> scores){
+    Garment[] clothes = new Garment[chosen.size()];
+    Score score = null;
     for(Iterator<Score> itScores = scores.iterator(); itScores.hasNext();){
-      int type = itScores.next().getType();
-      if(type == getGarment().getType())
+      score = itScores.next();
+      if(score.getType() == getGarment().getType())
         break;
-      clothes[type] = chosen[type].getSelected().getGarment();
+      clothes[score.getChosenIndex()] =
+          chosen.get(score.getChosenIndex()).getSelected().getGarment();
     }
     compatibility.update(clothes);
   }

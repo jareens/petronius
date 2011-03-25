@@ -112,6 +112,15 @@ public class ChoiceOptions{
     this.weather = weather;
   }
 
+  public int getGarmentType(int index){
+    int j = 0;
+    for(int i = 0; i <= 8; i++)
+      if((1 << i & garmentTypes) > 0)
+        if(j++ == index)
+          return i;
+    return -1;
+  }
+
   public byte getGarmentTypes(){
     return garmentTypes;
   }

@@ -20,8 +20,8 @@
     perse.\nSi desidera salvarle nello storico?</string>
   <string name="chosen_clothes_picker">Scelta abiti selezionati</string>
   <string name="chosen_garment_view">Mostra abito selezionato</string>
-  <string name="chosen_list_empty">Nessun abito selezionato. Aggiungere nuovi abiti dal menu
-    della \"Lista abiti\" per il tipo di abito selezionato</string>
+  <string name="chosen_list_empty">Nessun abito selezionato. Non sono stati trovati abiti che
+    corrispondono ai parametri di scelta inseriti.</string>
   <string name="clothes_choice">Scelta abiti</string>
   <string name="clothes_chooser">Scelta abiti</string>
   <string name="clothes_list">Lista abiti</string>

@@ -29,10 +29,10 @@ public class Score implements Comparable<Score>{
   private int     chosenIndex;
   private int     score;
 
-  public Score(ChosenGarment garment, boolean selected,int chosenIndex){
+  public Score(ChosenGarment garment, boolean selected, int chosenIndex){
     this.selected = selected;
     type = garment.getGarment().getType();
-    this.chosenIndex=chosenIndex;
+    this.chosenIndex = chosenIndex;
     score = garment.getTotal();
   }
 
@@ -55,16 +55,16 @@ public class Score implements Comparable<Score>{
 
     if(selected && !another.selected)
       return -1;
-    
+
     if(!selected && another.selected)
       return 1;
-    
+
     if(getScore() > another.getScore())
       return -1;
-    
+
     if(getScore() < another.getScore())
       return 1;
-    
+
     return 0;
   }
 }

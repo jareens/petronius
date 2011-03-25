@@ -22,6 +22,7 @@
 
 package org.dyndns.ipignoli.petronius;
 
+import java.util.List;
 import org.dyndns.ipignoli.petronius.choice.Chooser;
 import org.dyndns.ipignoli.petronius.db.MyHelper;
 import org.dyndns.ipignoli.petronius.ui.AbstractClothesListPicker;
@@ -36,16 +37,17 @@ public class ChosenClothesListPicker extends AbstractClothesListPicker{
 
   private Chooser[]       chooser;
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void onCreate(Bundle savedInstanceState){
     super.onCreate(savedInstanceState);
 
     long garmentId = getIntent().getExtras().getLong(MyHelper.F_CLOTHES_ID);
 
-    Chooser[] chosen =
-        (Chooser[])CommonStore.getInstance().get(
+    List<Chooser> chosen =
+        (List<Chooser>)CommonStore.getInstance().get(
             CommonStore.CLOTHES_CHOOSER_CHOOSER);
-    chooser = new Chooser[chosen.length - 1];
+    chooser = new Chooser[chosen.size() - 1];
     int index = 0;
     for(Chooser c: chosen)
       if(c.getSelected().getGarment().getId() != garmentId)

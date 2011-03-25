@@ -22,6 +22,7 @@
 
 package org.dyndns.ipignoli.petronius;
 
+import java.util.List;
 import org.dyndns.ipignoli.petronius.choice.Chooser;
 import org.dyndns.ipignoli.petronius.choice.ChosenGarment;
 import org.dyndns.ipignoli.petronius.db.MyHelper;
@@ -69,6 +70,7 @@ public class ChosenGarmentView extends ListActivity{
     });
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void onResume(){
     super.onResume();
@@ -76,8 +78,8 @@ public class ChosenGarmentView extends ListActivity{
     MyContext.initialize(this);
 
     chosen =
-        ((Chooser[])CommonStore.getInstance().get(
-            CommonStore.CLOTHES_CHOOSER_CHOOSER))[garmentType].getSelected();
+        ((List<Chooser>)CommonStore.getInstance().get(
+            CommonStore.CLOTHES_CHOOSER_CHOOSER)).get(garmentType).getSelected();
 
     updateData();
   }

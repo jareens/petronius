@@ -54,7 +54,7 @@ public class SaveHistory extends ListActivity{
     public void OnClick(View v, int position);
   }
 
-  private Chooser[]               chooser;
+  private List<Chooser>           chooser;
   private long                    choiceDate;
 
   private Button                  buttonOK;
@@ -159,9 +159,10 @@ public class SaveHistory extends ListActivity{
     super.finish();
   }
 
+  @SuppressWarnings("unchecked")
   private void restoreState(){
     chooser =
-        (Chooser[])CommonStore.getInstance().get(
+        (List<Chooser>)CommonStore.getInstance().get(
             CommonStore.CLOTHES_CHOOSER_CHOOSER);
 
     if(CommonStore.getInstance().containsKey(
@@ -176,7 +177,7 @@ public class SaveHistory extends ListActivity{
               CommonStore.SAVE_HISTORY_CHECKED);
     else{
       checked = new SparseBooleanArray();
-      for(int i = 0; i < chooser.length; i++)
+      for(int i = 0; i < chooser.size(); i++)
         checked.put(i, true);
     }
   }
@@ -192,11 +193,11 @@ public class SaveHistory extends ListActivity{
   }
 
   private void saveHistory(){
-    List<ChosenGarment> checked = new ArrayList<ChosenGarment>(chooser.length);
-    for(int i = 0; i < chooser.length; i++)
+    List<ChosenGarment> checked = new ArrayList<ChosenGarment>(chooser.size());
+    for(int i = 0; i < chooser.size(); i++)
       if(((SaveHistoryAdapter)getListAdapter()).getCheckedItemPositions()
           .get(i))
-        checked.add(chooser[i].getSelected());
+        checked.add(chooser.get(i).getSelected());
 
     if(checked.size() == 0)
       (new AlertDialog.Builder(this)).setIcon(
@@ -215,7 +216,7 @@ public class SaveHistory extends ListActivity{
   }
 
   private void updateData(){
-    setListAdapter(new SaveHistoryAdapter(this, chooser, checked,
+    setListAdapter(new SaveHistoryAdapter(this, chooser.toArray(new Chooser[]{}), checked,
         listItemListener));
   }
 }

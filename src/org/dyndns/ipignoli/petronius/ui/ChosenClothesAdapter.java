@@ -67,10 +67,10 @@ public class ChosenClothesAdapter extends ArrayAdapter<Chooser>{
     else
       viewHolder = (ViewHolder)convertView.getTag();
 
-    viewHolder.text.setText(chooser[position].getSelected().getGarment()
-        .getName());
-    viewHolder.icon.setImageBitmap(GarmentImage.getInstance().getGarmentImage(
-        chooser[position].getSelected().getGarment()));
+      viewHolder.text.setText(chooser[position].getSelected().getGarment()
+          .getName());
+      viewHolder.icon.setImageBitmap(GarmentImage.getInstance()
+          .getGarmentImage(chooser[position].getSelected().getGarment()));
 
     return convertView;
   }

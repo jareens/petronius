@@ -6,8 +6,9 @@
   <string name="archive_load">Archive load</string>
   <string name="archive_load_chosen">You have chosen to load</string>
   <string name="archive_load_ok">Archive loaded successfully</string>
-    <string name="archive_not_restored">The archive may be in an inconsistent
-    state.\nPlease reload last backup.</string>
+  <string name="archive_not_restored">The archive may be in an inconsistent
+    state.\nPlease reload
+    last backup.</string>
   <string name="archive_prefix">petronius</string>
   <string name="archive_restored">Old archive has been restored</string>
   <string name="archive_save">Archive save</string>
@@ -20,8 +21,8 @@
     lost.\nDo you wish to save them in the history archive?</string>
   <string name="chosen_clothes_picker">Chosen clothes picker</string>
   <string name="chosen_garment_view">Chosen garment view</string>
-  <string name="chosen_list_empty">No clothes choosen. Add new clothes from \"Clothes list\"
-    menu for the garment types you selected</string>
+  <string name="chosen_list_empty">No clothes choosen. No clothes could be found which match
+    the choice parameters you entered.</string>
   <string name="clothes_choice">Clothes choice</string>
   <string name="clothes_chooser">Clothes chooser</string>
   <string name="clothes_list">Clothes list</string>

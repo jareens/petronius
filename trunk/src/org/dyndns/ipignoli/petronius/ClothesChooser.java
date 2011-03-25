@@ -24,6 +24,7 @@ package org.dyndns.ipignoli.petronius;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import org.dyndns.ipignoli.petronius.choice.ChoiceOptions;
 import org.dyndns.ipignoli.petronius.choice.ChoiceOptionsException;
 import org.dyndns.ipignoli.petronius.choice.Chooser;
@@ -215,16 +216,17 @@ public class ClothesChooser extends Activity{
     }
 
     new ChooseClothes(ClothesChooser.this,
-        new ChooseClothes.EndTaskListener<Chooser[]>(){
+        new ChooseClothes.EndTaskListener<List<Chooser>>(){
+          @SuppressWarnings("unchecked")
           @Override
-          public void notify(Chooser[] result){
+          public void notify(List<Chooser> result){
             if(result == null)
               return;
 
             new UpdateCompatibility(ClothesChooser.this,
-                new UpdateCompatibility.EndTaskListener<Chooser[]>(){
+                new UpdateCompatibility.EndTaskListener<List<Chooser>>(){
                   @Override
-                  public void notify(Chooser[] result){
+                  public void notify(List<Chooser> result){
                     if(result == null)
                       return;
 

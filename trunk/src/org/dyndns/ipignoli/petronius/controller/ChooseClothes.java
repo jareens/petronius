@@ -22,8 +22,9 @@
 
 package org.dyndns.ipignoli.petronius.controller;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import org.dyndns.ipignoli.petronius.R;
 import org.dyndns.ipignoli.petronius.choice.ChoiceOptions;
 import org.dyndns.ipignoli.petronius.choice.Chooser;
@@ -34,11 +35,11 @@ import android.app.ProgressDialog;
 
 
 public class ChooseClothes extends
-    MyAsyncTask<ChoiceOptions, Integer, Chooser[]>{
+    MyAsyncTask<ChoiceOptions, Integer, List<Chooser>>{
 
   private MyHelper dbHelper;
 
-  public ChooseClothes(Activity activity, EndTaskListener<Chooser[]> callback){
+  public ChooseClothes(Activity activity, EndTaskListener<List<Chooser>> callback){
     super(activity.getResources().getString(R.string.clothes_choice), activity,
         callback);
     dbHelper = new MyHelper(activity);
@@ -46,23 +47,25 @@ public class ChooseClothes extends
   }
 
   @Override
-  protected Chooser[] doTheWork(ChoiceOptions... options) throws Exception{
-    ArrayList<Chooser> chosen =
-        new ArrayList<Chooser>();
-    
-    progressDialog.setMax(Types.getInstance().getTotSet(options[0].getGarmentTypes()));
-    
+  protected List<Chooser> doTheWork(ChoiceOptions... options) throws Exception{
+    List<Chooser> chosen=new LinkedList<Chooser>();
+
+    progressDialog.setMax(Types.getInstance().getTotSet(
+        options[0].getGarmentTypes()));
+
     Chooser chooser;
-    for(int i = 0; i < Types.getInstance().getTotSet(options[0].getGarmentTypes()); i++){
+    for(int i = 0; i < Types.getInstance().getTotSet(
+        options[0].getGarmentTypes()); i++){
       chooser =
-          new Chooser(i, options[0], dbHelper, getActivity().getResources());
-      if(chooser.size()>0){
+          new Chooser(options[0].getGarmentType(i), options[0], dbHelper,
+              getActivity().getResources());
+      if(chooser.size() > 0){
         Collections.sort(chooser);
         chosen.add(chooser);
       }
-      updateProgress(i+1);
+      updateProgress(i + 1);
     }
 
-    return chosen.toArray(new Chooser[]{});
+    return chosen;
   }
 }

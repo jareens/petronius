@@ -22,8 +22,8 @@
 
 package org.dyndns.ipignoli.petronius;
 
+import java.util.List;
 import org.dyndns.ipignoli.petronius.choice.Chooser;
-import org.dyndns.ipignoli.petronius.db.MyHelper;
 import org.dyndns.ipignoli.petronius.ui.ChosenClothesPickerAdapter;
 import org.dyndns.ipignoli.petronius.util.CommonStore;
 import org.dyndns.ipignoli.petronius.util.MyContext;
@@ -41,7 +41,7 @@ public class ChosenClothesPicker extends ListActivity{
 
   public static final int ACTIVITY_TYPE_PICK = 1;
 
-  private Integer         garmentType;
+  private Integer         chosenIndex;
   private Chooser         chooser;
 
   @Override
@@ -51,9 +51,10 @@ public class ChosenClothesPicker extends ListActivity{
     setTitle(R.string.chosen_clothes_picker);
 
     Bundle extras = getIntent().getExtras();
-    garmentType = (Integer)extras.get(MyHelper.F_CLOTHES_TYPE);
+    chosenIndex = (Integer)extras.get(ClothesChoice.CHOSEN_INDEX);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   protected void onResume(){
     super.onResume();
@@ -61,8 +62,8 @@ public class ChosenClothesPicker extends ListActivity{
     MyContext.initialize(this);
 
     chooser =
-        ((Chooser[])CommonStore.getInstance().get(
-            CommonStore.CLOTHES_CHOOSER_CHOOSER))[garmentType];
+        ((List<Chooser>)CommonStore.getInstance().get(
+            CommonStore.CLOTHES_CHOOSER_CHOOSER)).get(chosenIndex);
     updateData();
   }
 

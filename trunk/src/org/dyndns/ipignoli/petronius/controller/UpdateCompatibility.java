@@ -35,36 +35,36 @@ import android.app.ProgressDialog;
 
 
 public class UpdateCompatibility extends
-    MyAsyncTask<Chooser[], Integer, Chooser[]>{
+    MyAsyncTask<List<Chooser>, Integer, List<Chooser>>{
 
   public UpdateCompatibility(Activity activity,
-      EndTaskListener<Chooser[]> callback){
+      EndTaskListener<List<Chooser>> callback){
     super(activity.getResources().getString(R.string.compatibility_update),
         activity, callback);
     progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
   }
 
   @Override
-  protected Chooser[] doTheWork(Chooser[]... chosen) throws Exception{
+  protected List<Chooser> doTheWork(List<Chooser>... chosen) throws Exception{
 
-    progressDialog.setMax(chosen[0].length);
+    progressDialog.setMax(chosen[0].size());
     int progress = 0;
 
     List<Score> scores = new ArrayList<Score>();
-    for(int i = 0; i < chosen[0].length; i++){
-      if(chosen[0][i].size() == 0)
+    for(int i = 0; i < chosen[0].size(); i++){
+      if(chosen[0].get(i).size() == 0)
         continue;
-      scores.add(new Score(chosen[0][i].getSelected(), chosen[0][i]
-          .isSelected(),i));
+      scores.add(new Score(chosen[0].get(i).getSelected(), chosen[0].get(i)
+          .isSelected(), i));
     }
     Collections.sort(scores);
 
     for(Iterator<Score> itScores = scores.iterator(); itScores.hasNext();){
       int index = itScores.next().getChosenIndex();
-      for(Iterator<ChosenGarment> itChosen = chosen[0][index].iterator(); itChosen
+      for(Iterator<ChosenGarment> itChosen = chosen[0].get(index).iterator(); itChosen
           .hasNext();)
         itChosen.next().updateCompatibility(chosen[0], scores);
-      Collections.sort(chosen[0][index]);
+      Collections.sort(chosen[0].get(index));
       updateProgress(++progress);
     }
 

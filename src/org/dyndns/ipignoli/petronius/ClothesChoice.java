@@ -295,6 +295,7 @@ public class ClothesChoice extends ListActivity{
     startActivityForResult(intent, ACTIVITY_SAVE);
   }
 
+  @SuppressWarnings("unchecked")
   private void updateCompatibilities(){
     new UpdateCompatibility(this,
         new UpdateCompatibility.EndTaskListener<List<Chooser>>(){

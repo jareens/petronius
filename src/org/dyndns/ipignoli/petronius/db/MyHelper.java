@@ -258,6 +258,11 @@ public class MyHelper extends SQLiteOpenHelper{
         F_HISTORY_GARMENT_ID + "=" + garmentId, null);
   }
 
+  public boolean updateHistory(long date){
+    return getWritableDatabase().delete(TABLE_HISTORY, F_HISTORY_DATE + "<" + date,
+        null) > 0;
+  }
+
   private void deleteGarmentCompatibilities(long garmentId){
     getWritableDatabase().delete(
         TABLE_COMPATIBILITIES,

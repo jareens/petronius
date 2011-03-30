@@ -22,6 +22,9 @@
 
 package org.dyndns.ipignoli.petronius;
 
+import java.util.GregorianCalendar;
+import org.dyndns.ipignoli.petronius.controller.HistoryUpdate;
+import org.dyndns.ipignoli.petronius.controller.MyAsyncTask.EndTaskListener;
 import org.dyndns.ipignoli.petronius.util.CommonStore;
 import org.dyndns.ipignoli.petronius.util.MyContext;
 import android.app.TabActivity;
@@ -66,6 +69,11 @@ public class Petronius extends TabActivity{
             .setContent(intent));
 
     getTabHost().setCurrentTab(0);
+    
+    new HistoryUpdate(this,new EndTaskListener<Boolean>(){
+      @Override
+      public void notify(Boolean result){}
+      }).execute(new GregorianCalendar());
   }
 
   @Override

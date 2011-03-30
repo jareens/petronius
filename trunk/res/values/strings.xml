@@ -103,6 +103,7 @@
   <string name="history_record_retrieve">History record retrieve</string>
   <string name="history_record_update">History record update</string>
   <string name="history_save">History save</string>
+  <string name="history_update">History update</string>
   <string name="in_progress">in progress</string>
   <string name="invalid_filename">The file name is not valid</string>
   <string name="last_selection">Last selection</string>

@@ -105,6 +105,7 @@
   <string name="history_record_retrieve">Caricamento entrata dello storico</string>
   <string name="history_record_update">Aggiornamento entrata dello storico</string>
   <string name="history_save">Salvataggio storico</string>
+  <string name="history_update">Aggiornamento storico</string>
   <string name="in_progress">in corso</string>
   <string name="invalid_filename">Il nome del file non è valido</string>
   <string name="last_selection">Ultima selezione</string>

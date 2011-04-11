@@ -1,9 +1,3 @@
-<html>
-  <head>
-    <title>Clothes list</title>
-  </head>
-  <body>
-    
     <h1>Clothes list</h1>
 
     <h3><a href="#introduction">1 Introduction</a></h3>
@@ -40,5 +34,3 @@
       <h5>3.6 Reset default image</h5>
       Resets the garment image to the default one.
     </p>
-  </body
-</html>

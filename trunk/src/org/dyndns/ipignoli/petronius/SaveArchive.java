@@ -73,7 +73,7 @@ public class SaveArchive extends Activity{
     GregorianCalendar d = new GregorianCalendar();
     String fName =
         getResources().getString(R.string.archive_prefix) + "_"
-            + d.get(Calendar.YEAR) + "-" + d.get(Calendar.MONTH) + "-"
+            + d.get(Calendar.YEAR) + "-" + (d.get(Calendar.MONTH) + 1) + "-"
             + d.get(Calendar.DAY_OF_MONTH);
     sdCardPath =
         Environment.getExternalStorageDirectory().getAbsolutePath()

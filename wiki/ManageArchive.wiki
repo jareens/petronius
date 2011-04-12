@@ -1,0 +1,27 @@
+    <h1>Manage archive</h1>
+
+    <h3><a href="#introduction">1 Introduction</a></h3>
+    <h3><a href="#options_menu">2 Options menu</a></h3>
+    <h3><a href="#context_menu">3 Context menu</a></h3>
+
+    <h3><a name="introduction">1 Introduction</a></h3>
+    <p>
+      This page lets you manage the exports of the archive. You can save all the
+      definitions used by Petronius in a XML file on the SD card. The names listed are
+      the XML files already saved. If you press on a file name, the data it contains
+      will be loaded in place of your current archive: pay attention that all your
+      previous data will be deleted; it's therefore wise to make a fresh backup before
+      loading an export.
+    </p>
+    <h3><a name="options_menu">2 Options menu</a></h3>
+    <p>
+      These are the options you can select:
+      <h5>2.1 Save archive</h5>
+      Opens a form to enter a new filename and save the archive.
+    </p>
+    <h3><a name="context_menu">3 Context menu</a></h3>
+    <p>
+      These are the options listed when you long press a file name.
+      <h5>3.1 Delete archive</h5>
+      Click on it to delete the archive export.
+    </p>

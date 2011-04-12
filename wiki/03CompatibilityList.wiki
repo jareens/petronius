@@ -1,0 +1,25 @@
+    <h1>Compatibility list</h1>
+
+    <h3><a href="#introduction">1 Introduction</a></h3>
+    <h3><a href="#options_menu">2 Options menu</a></h3>
+    <h3><a href="#context_menu">3 Context menu</a></h3>
+
+    <h3><a name="introduction">1 Introduction</a></h3>
+    <p>
+      This page shows the list of compatibilities for the selected garment.
+      If you short press a compatibility you'll get its details shown.
+    </p>
+    <h3><a name="options_menu">2 Options menu</a></h3>
+    <p>
+      These are the options you can select:
+      <h5>2.2 New compatibility</h5>
+      Opens a form to enter a new compatibility's data.
+    </p>
+    <h3><a name="context_menu">3 Context menu</a></h3>
+    <p>
+      These are the options listed when you long press a compatibility:
+      <h5>3.1 Edit compatibility</h5>
+      Opens a form to edit compatibility's data.
+      <h5>3.2 Delete compatibility</h5>
+      Click on it to delete the compatibility.
+    </p>

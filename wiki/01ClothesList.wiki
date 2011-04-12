@@ -1,0 +1,36 @@
+    <h1>Clothes list</h1>
+
+    <h3><a href="#introduction">1 Introduction</a></h3>
+    <h3><a href="#options_menu">2 Options menu</a></h3>
+    <h3><a href="#context_menu">3 Context menu</a></h3>
+
+    <h3><a name="introduction">1 Introduction</a></h3>
+    <p>
+      This page shows the list of clothes you definded.
+      If you short press a garment its properties will be shown.
+    </p>
+    <h3><a name="options_menu">2 Options menu</a></h3>
+    <p>
+      These are the options you can select:
+      <h5>2.1 Choose clothes</h5>
+      Shows a new screen in which you can enter the parameters to let
+      Petronius choose the clothes to wear.
+      <h5>2.2 New garment</h5>
+      Opens a form to enter a new garment's data.
+    </p>
+    <h3><a name="context_menu">3 Context menu</a></h3>
+    <p>
+      These are the options listed when you long press a garment:
+      <h5>3.1 Edit garment</h5>
+      Opens a form to edit garment's data.
+      <h5>3.2 Delete garment</h5>
+      Click on it to delete the garment.
+      <h5>3.3 Set available</h5>
+      Sets the garment as available for choices.
+      <h5>3.4 Set unavailable</h5>
+      Sets the garment as unavailable for choices.
+      <h5>3.5 Change image</h5>
+      Allows you to choose another image to represent the garment in the list. 
+      <h5>3.6 Reset default image</h5>
+      Resets the garment image to the default one.
+    </p>

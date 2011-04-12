@@ -1,0 +1,26 @@
+    <h1>History list</h1>
+
+    <h3><a href="#introduction">1 Introduction</a></h3>
+    <h3><a href="#options_menu">2 Options menu</a></h3>
+    <h3><a href="#context_menu">3 Context menu</a></h3>
+
+    <h3><a name="introduction">1 Introduction</a></h3>
+    <p>
+      This page shows the list of history records. An history record stores the
+      information about when a garment was worn. If you short press a record its
+      properties will be shown.
+    </p>
+    <h3><a name="options_menu">2 Options menu</a></h3>
+    <p>
+      These are the options you can select:
+      <h5>2.1 New history record</h5>
+      Opens a form to enter a new history record's data.
+    </p>
+    <h3><a name="context_menu">3 Context menu</a></h3>
+    <p>
+      These are the options listed when you long press a history record:
+      <h5>3.1 Edit history record</h5>
+      Opens a form to edit history record's data.
+      <h5>3.2 Delete history record</h5>
+      Click on it to delete the record.
+    </p>

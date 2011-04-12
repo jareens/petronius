@@ -20,4 +20,10 @@
 <li>
 [http://code.google.com/p/petronius/wiki/ClothesChoice] Clothes choice
 </li>
+<li>
+[http://code.google.com/p/petronius/wiki/ChosenClothes] Chosen clothes
+</li>
+<li>
+[http://code.google.com/p/petronius/wiki/ChosenGarment] Chosen garment
+</li>
 </ul>

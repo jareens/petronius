@@ -1,4 +1,14 @@
-[http://code.google.com/p/petronius/wiki/ClothesList] Clothes list <br />
-[http://code.google.com/p/petronius/wiki/GarmentEdit] Garment edit <br />
-[http://code.google.com/p/petronius/wiki/CompatibilityList] Compatibility list <br />
-[http://code.google.com/p/petronius/wiki/CompatibilityEdit] Compatibility edit <br />
+<ul>
+<li>
+[http://code.google.com/p/petronius/wiki/ClothesList] Clothes list
+</li>
+<li>
+[http://code.google.com/p/petronius/wiki/GarmentEdit] Garment edit
+</li>
+<li>
+[http://code.google.com/p/petronius/wiki/CompatibilityList] Compatibility list
+</li>
+<li>
+[http://code.google.com/p/petronius/wiki/CompatibilityEdit] Compatibility edit
+</li>
+</ul>

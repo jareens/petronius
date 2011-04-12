@@ -26,4 +26,7 @@
 <li>
 [http://code.google.com/p/petronius/wiki/ChosenGarment] Chosen garment
 </li>
+<li>
+[http://code.google.com/p/petronius/wiki/ManageArchive] Manage archive
+</li>
 </ul>

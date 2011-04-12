@@ -17,4 +17,7 @@
 <li>
 [http://code.google.com/p/petronius/wiki/HistoryRecordEdit] History record edit
 </li>
+<li>
+[http://code.google.com/p/petronius/wiki/ClothesChoice] Clothes choice
+</li>
 </ul>

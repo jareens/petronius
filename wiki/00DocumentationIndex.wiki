@@ -15,6 +15,6 @@
 [http://code.google.com/p/petronius/wiki/HistoryList] History list
 </li>
 <li>
-[http://code.google.com/p/petronius/wiki/HistoryEdit] History edit
+[http://code.google.com/p/petronius/wiki/HistoryRecordEdit] History record edit
 </li>
 </ul>

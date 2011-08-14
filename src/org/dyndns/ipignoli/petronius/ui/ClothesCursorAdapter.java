@@ -43,6 +43,7 @@ public class ClothesCursorAdapter extends SimpleCursorAdapter{
     });
 
     setViewBinder(new ViewBinder(){
+      @Override
       public boolean setViewValue(View view, Cursor cursor, int columnIndex){
         if(columnIndex == cursor.getColumnIndex(MyHelper.F_CLOTHES_IMAGE)){
           ((ImageView)view)

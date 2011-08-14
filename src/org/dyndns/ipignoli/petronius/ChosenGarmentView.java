@@ -64,6 +64,7 @@ public class ChosenGarmentView extends ListActivity{
 
     buttonOK = (Button)findViewById(R.id.parameter_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_OK);
       }

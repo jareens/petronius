@@ -83,6 +83,7 @@ public class EditHistoryRecord extends Activity{
     editDate = (DatePicker)findViewById(R.id.edit_history_record_date);
     buttonGarment = (Button)findViewById(R.id.edit_history_record_garment);
     buttonGarment.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         Intent intent =
             new Intent(EditHistoryRecord.this, ClothesListPicker.class);
@@ -94,6 +95,7 @@ public class EditHistoryRecord extends Activity{
 
     buttonOK = (Button)findViewById(R.id.edit_history_record_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         saveHistoryRecord();
       }
@@ -101,6 +103,7 @@ public class EditHistoryRecord extends Activity{
 
     buttonCancel = (Button)findViewById(R.id.edit_history_record_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_CANCEL);
       }
@@ -113,6 +116,7 @@ public class EditHistoryRecord extends Activity{
       case (ACTIVITY_TYPE_EDIT):
         new HistoryRecordRetrieve(this,
             new HistoryRecordRetrieve.EndTaskListener<HistoryRecord>(){
+              @Override
               public void notify(final HistoryRecord historyRecord){
                 EditHistoryRecord.this.historyRecord = historyRecord;
                 updateUI();
@@ -296,6 +300,7 @@ public class EditHistoryRecord extends Activity{
               public void onClick(DialogInterface dialog, int which){
                 new HistoryRecordDeletion(EditHistoryRecord.this,
                     new HistoryRecordDeletion.EndTaskListener<Boolean>(){
+                      @Override
                       public void notify(Boolean result){
                         if(result)
                           endMe(RESULT_DELETE);

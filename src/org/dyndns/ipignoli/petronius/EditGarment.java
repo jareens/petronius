@@ -100,6 +100,7 @@ public class EditGarment extends Activity{
 
     buttonOK = (Button)findViewById(R.id.edit_garment_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         saveGarment();
       }
@@ -107,6 +108,7 @@ public class EditGarment extends Activity{
 
     buttonCancel = (Button)findViewById(R.id.edit_garment_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_CANCEL);
       }
@@ -119,6 +121,7 @@ public class EditGarment extends Activity{
       case (ACTIVITY_TYPE_EDIT):
         new GarmentRetrieve(this,
             new GarmentRetrieve.EndTaskListener<Garment>(){
+              @Override
               public void notify(final Garment garment){
                 EditGarment.this.garment = garment;
                 updateUI();
@@ -314,6 +317,7 @@ public class EditGarment extends Activity{
               public void onClick(DialogInterface dialog, int which){
                 new GarmentDeletion(EditGarment.this,
                     new GarmentDeletion.EndTaskListener<Boolean>(){
+                      @Override
                       public void notify(Boolean result){
                         if(result)
                           endMe(RESULT_DELETE);

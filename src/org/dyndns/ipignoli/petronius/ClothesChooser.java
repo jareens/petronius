@@ -94,6 +94,7 @@ public class ClothesChooser extends Activity{
 
     buttonOK = (Button)findViewById(R.id.chooser_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         launchChoice();
       }
@@ -101,6 +102,7 @@ public class ClothesChooser extends Activity{
 
     buttonCancel = (Button)findViewById(R.id.chooser_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_CANCEL);
       }

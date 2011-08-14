@@ -37,13 +37,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.ListView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.ListView;
 
 
 public class ClothesList extends AbstractClothesList{
@@ -258,6 +258,7 @@ public class ClothesList extends AbstractClothesList{
 
   private void deleteGarment(long id){
     new GarmentRetrieve(this, new GarmentRetrieve.EndTaskListener<Garment>(){
+      @Override
       public void notify(final Garment garment){
         if(garment == null)
           return;
@@ -274,6 +275,7 @@ public class ClothesList extends AbstractClothesList{
                   public void onClick(DialogInterface dialog, int which){
                     new GarmentDeletion(ClothesList.this,
                         new GarmentDeletion.EndTaskListener<Boolean>(){
+                          @Override
                           public void notify(Boolean result){
                             if(result == null)
                               return;
@@ -288,6 +290,7 @@ public class ClothesList extends AbstractClothesList{
 
   private void setGarmentAvailable(long id, final boolean available){
     new GarmentRetrieve(this, new GarmentRetrieve.EndTaskListener<Garment>(){
+      @Override
       public void notify(final Garment garment){
         if(garment == null || garment.isAvailable() == available)
           return;
@@ -296,6 +299,7 @@ public class ClothesList extends AbstractClothesList{
 
         new GarmentUpdate(ClothesList.this,
             new GarmentUpdate.EndTaskListener<Boolean>(){
+              @Override
               public void notify(Boolean result){
                 updateData();
               }

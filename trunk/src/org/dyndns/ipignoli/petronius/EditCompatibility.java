@@ -68,7 +68,7 @@ public class EditCompatibility extends Activity{
 
   private long             garmentId;
   private Compatibility    compatibility;
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("rawtypes")
   private Class            listPickerClass;
 
   private boolean          ended;
@@ -85,6 +85,7 @@ public class EditCompatibility extends Activity{
 
     buttonGarment1 = (Button)findViewById(R.id.edit_compatibility_garment1);
     buttonGarment1.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         startGarmentPicker(ACTIVITY_PICK_1, compatibility.getGarmentId2());
       }
@@ -92,6 +93,7 @@ public class EditCompatibility extends Activity{
 
     buttonGarment2 = (Button)findViewById(R.id.edit_compatibility_garment2);
     buttonGarment2.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         startGarmentPicker(ACTIVITY_PICK_2, compatibility.getGarmentId1());
       }
@@ -101,6 +103,7 @@ public class EditCompatibility extends Activity{
 
     buttonOK = (Button)findViewById(R.id.edit_compatibility_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         saveCompatibility();
       }
@@ -108,6 +111,7 @@ public class EditCompatibility extends Activity{
 
     buttonCancel = (Button)findViewById(R.id.edit_compatibility_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_CANCEL);
       }
@@ -123,6 +127,7 @@ public class EditCompatibility extends Activity{
         listPickerClass = ClothesListPicker.class;
         new CompatibilityRetrieve(this,
             new CompatibilityRetrieve.EndTaskListener<Compatibility>(){
+              @Override
               public void notify(final Compatibility compatibility){
                 EditCompatibility.this.compatibility = compatibility;
                 updateUI();
@@ -310,6 +315,7 @@ public class EditCompatibility extends Activity{
           public void onClick(DialogInterface dialog, int which){
             new CompatibilityDeletion(EditCompatibility.this,
                 new CompatibilityDeletion.EndTaskListener<Boolean>(){
+                  @Override
                   public void notify(Boolean result){
                     if(result)
                       endMe(RESULT_DELETE);

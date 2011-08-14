@@ -48,6 +48,7 @@ public class CompatibilityCursorAdapter extends SimpleCursorAdapter{
     helper = new MyHelper(context);
 
     setViewBinder(new ViewBinder(){
+      @Override
       public boolean setViewValue(View view, Cursor cursor, int columnIndex){
         if(columnIndex == cursor
             .getColumnIndex(MyHelper.F_COMPATIBILITIES_LEVEL)){

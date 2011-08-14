@@ -31,8 +31,8 @@ import org.dyndns.ipignoli.petronius.util.MyContext;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -90,6 +90,7 @@ public class SaveArchive extends Activity{
 
     buttonOK = (Button)findViewById(R.id.save_archive_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         saveArchive();
       }
@@ -97,6 +98,7 @@ public class SaveArchive extends Activity{
 
     buttonCancel = (Button)findViewById(R.id.save_archive_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_CANCEL);
       }
@@ -209,6 +211,7 @@ public class SaveArchive extends Activity{
             .setMessage(R.string.archive_save_ok).setCancelable(false)
             .setPositiveButton(R.string.ok,
                 new DialogInterface.OnClickListener(){
+                  @Override
                   public void onClick(DialogInterface dialog, int id){
                     endMe(RESULT_OK);
                   }

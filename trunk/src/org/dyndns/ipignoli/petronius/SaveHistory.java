@@ -75,6 +75,7 @@ public class SaveHistory extends ListActivity{
     setTitle(R.string.save_history_records);
 
     listItemListener = new SaveHistoryItemListener(){
+      @Override
       public void OnClick(View v, int position){
         SaveHistory.this.onListItemClick(SaveHistory.this.getListView(), v,
             position, position);
@@ -91,6 +92,7 @@ public class SaveHistory extends ListActivity{
 
     buttonOK = (Button)findViewById(R.id.chosen_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         saveHistory();
       }
@@ -98,6 +100,7 @@ public class SaveHistory extends ListActivity{
 
     buttonCancel = (Button)findViewById(R.id.chosen_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         endMe(RESULT_CANCEL);
       }

@@ -37,13 +37,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.ListView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.ListView;
 
 
 public class ManageArchive extends ListActivity{
@@ -184,6 +184,7 @@ public class ManageArchive extends ListActivity{
           android.R.drawable.ic_dialog_alert).setMessage(
           R.string.sdcard_not_readable).setCancelable(false).setPositiveButton(
           R.string.ok, new DialogInterface.OnClickListener(){
+            @Override
             public void onClick(DialogInterface dialog, int id){}
           }).show();
       return;
@@ -195,12 +196,14 @@ public class ManageArchive extends ListActivity{
                 + ((File)getListAdapter().getItem(index)).getName() + "?")
         .setCancelable(false).setPositiveButton(R.string.ok,
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){
                 if(((File)getListAdapter().getItem(index)).delete())
                   updateData();
               }
             }).setNegativeButton(getResources().getString(R.string.cancel),
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){}
             }).show();
 
@@ -214,6 +217,7 @@ public class ManageArchive extends ListActivity{
           android.R.drawable.ic_dialog_alert).setMessage(
           R.string.sdcard_not_readable).setCancelable(false).setPositiveButton(
           R.string.ok, new DialogInterface.OnClickListener(){
+            @Override
             public void onClick(DialogInterface dialog, int id){}
           }).show();
       return;
@@ -226,6 +230,7 @@ public class ManageArchive extends ListActivity{
                 + getResources().getString(R.string.confirm_archive_load))
         .setCancelable(false).setPositiveButton(R.string.ok,
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){
                 new ArchiveLoad(ManageArchive.this,
                     new ArchiveLoad.EndTaskListener<Boolean>(){
@@ -238,6 +243,7 @@ public class ManageArchive extends ListActivity{
                               .setCancelable(false).setPositiveButton(
                                   R.string.ok,
                                   new DialogInterface.OnClickListener(){
+                                    @Override
                                     public void onClick(DialogInterface dialog,
                                         int id){}
                                   }).show();
@@ -246,6 +252,7 @@ public class ManageArchive extends ListActivity{
               }
             }).setNegativeButton(getResources().getString(R.string.cancel),
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){}
             }).show();
 

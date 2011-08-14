@@ -35,16 +35,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
 
 public class ClothesChoice extends ListActivity{
@@ -86,6 +86,7 @@ public class ClothesChoice extends ListActivity{
 
     buttonOK = (Button)findViewById(R.id.chosen_ok);
     buttonOK.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         saveHistory();
       }
@@ -93,6 +94,7 @@ public class ClothesChoice extends ListActivity{
 
     buttonCancel = (Button)findViewById(R.id.chosen_cancel);
     buttonCancel.setOnClickListener(new View.OnClickListener(){
+      @Override
       public void onClick(View view){
         manageCancel();
       }
@@ -258,16 +260,19 @@ public class ClothesChoice extends ListActivity{
         .setTitle(R.string.save_choices).setMessage(R.string.choices_not_saved)
         .setCancelable(false).setNeutralButton(R.string.dont_save,
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){
                 endMe(RESULT_CANCEL);
               }
             }).setPositiveButton(R.string.save,
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){
                 saveHistory();
               }
             }).setNegativeButton(R.string.cancel,
             new DialogInterface.OnClickListener(){
+              @Override
               public void onClick(DialogInterface dialog, int id){}
             }).show();
     return;

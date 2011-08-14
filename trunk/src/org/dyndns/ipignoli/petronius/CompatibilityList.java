@@ -38,14 +38,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
 
 public class CompatibilityList extends ListActivity{
@@ -216,6 +216,7 @@ public class CompatibilityList extends ListActivity{
   private void deleteCompatibility(long id){
     new CompatibilityRetrieve(this,
         new CompatibilityRetrieve.EndTaskListener<Compatibility>(){
+          @Override
           public void notify(final Compatibility compatibility){
             if(compatibility == null)
               return;
@@ -230,6 +231,7 @@ public class CompatibilityList extends ListActivity{
                   public void onClick(DialogInterface dialog, int which){
                     new CompatibilityDeletion(CompatibilityList.this,
                         new CompatibilityDeletion.EndTaskListener<Boolean>(){
+                          @Override
                           public void notify(Boolean result){
                             if(result == null)
                               return;
@@ -245,6 +247,7 @@ public class CompatibilityList extends ListActivity{
   private void updateData(){
     new CompatibilitiesLoad(this,
         new CompatibilitiesLoad.EndTaskListener<Cursor>(){
+          @Override
           public void notify(final Cursor cursor){
             setListAdapter(getCursorAdapter(cursor));
           }

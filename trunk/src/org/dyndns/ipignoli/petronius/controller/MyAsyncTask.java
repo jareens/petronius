@@ -127,6 +127,7 @@ public abstract class MyAsyncTask<Params, Progress, Result> extends
     return activity;
   }
 
+  @Override
   public void updateProgress(Integer value){
     publishProgress(value);
   }

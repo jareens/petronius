@@ -33,11 +33,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 
 public abstract class AbstractClothesList extends ListActivity{
@@ -69,25 +69,30 @@ public abstract class AbstractClothesList extends ListActivity{
     editFilterType = (Spinner)findViewById(R.id.edit_garment_filter_type);
     editFilterType.setAdapter(adapterType);
     editFilterType.setOnItemSelectedListener(new OnItemSelectedListener(){
+      @Override
       public void onItemSelected(AdapterView<?> parent, View view, int pos,
           long id){
         filter.setGarmentTypeFilter(pos > 0 ? "" + (pos - 1) : null);
         updateData();
       }
 
+      @Override
       public void onNothingSelected(AdapterView<?> parent){}
     });
 
     editFilterName = (EditText)findViewById(R.id.edit_garment_filter_name);
     editFilterName.addTextChangedListener(new TextWatcher(){
+      @Override
       public void afterTextChanged(Editable s){
         filter.setGarmentNameFilter(s.length() > 0 ? s.toString() : null);
         updateData();
       }
 
+      @Override
       public void beforeTextChanged(CharSequence s, int start, int count,
           int after){}
 
+      @Override
       public void onTextChanged(CharSequence s, int start, int before, int count){}
     });
 
@@ -112,6 +117,7 @@ public abstract class AbstractClothesList extends ListActivity{
 
   protected void updateData(){
     (new ClothesLoad(this, new ClothesLoad.EndTaskListener<Cursor>(){
+      @Override
       public void notify(final Cursor cursor){
         setListAdapter(getCursorAdapter(cursor));
       }

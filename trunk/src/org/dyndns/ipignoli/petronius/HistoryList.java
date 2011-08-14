@@ -38,14 +38,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 
 
 public class HistoryList extends ListActivity{
@@ -221,6 +221,7 @@ public class HistoryList extends ListActivity{
   private void deleteHistoryRecord(long id){
     new HistoryRecordRetrieve(this,
         new HistoryRecordRetrieve.EndTaskListener<HistoryRecord>(){
+          @Override
           public void notify(final HistoryRecord historyRecord){
             if(historyRecord == null)
               return;
@@ -236,6 +237,7 @@ public class HistoryList extends ListActivity{
                         new HistoryRecordDeletion(
                             HistoryList.this,
                             new HistoryRecordDeletion.EndTaskListener<Boolean>(){
+                              @Override
                               public void notify(Boolean result){
                                 if(result == null)
                                   return;
@@ -250,6 +252,7 @@ public class HistoryList extends ListActivity{
 
   private void updateData(){
     new HistoryLoad(this, new HistoryLoad.EndTaskListener<Cursor>(){
+      @Override
       public void notify(final Cursor cursor){
         setListAdapter(getCursorAdapter(cursor));
       }

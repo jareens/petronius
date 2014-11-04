@@ -57,9 +57,15 @@ public class Chooser extends LinkedList<ChosenGarment>{
     filter.setGarmentWeatherFilter("" + options.getWeather());
     filter.setGarmentAvailableFilter(true);
 
-    Cursor cursor = dbHelper.fetchGarmentIds(filter);
+    Cursor cursor = null;
+    try{
+    cursor=dbHelper.fetchGarmentIds(filter);
     for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext())
       add(dbHelper.fetchGarment(cursor.getLong(0)));
+    }finally{
+      if(cursor!=null)
+        cursor.close();
+    }
   }
 
   public void add(Garment garment){

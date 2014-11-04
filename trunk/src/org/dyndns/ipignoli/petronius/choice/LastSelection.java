@@ -48,7 +48,9 @@ public class LastSelection extends HistoryParameter{
 
     HistoryRecordFilter filter = new HistoryRecordFilter();
     filter.setGarmentId(garment.getId());
-    Cursor cursor = dbHelper.fetchHistoryRecordIds(filter);
+    Cursor cursor=null;
+    try{
+    cursor= dbHelper.fetchHistoryRecordIds(filter);
     for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
       HistoryRecord record = dbHelper.fetchHistoryRecord(cursor.getLong(0));
       long days =
@@ -56,6 +58,10 @@ public class LastSelection extends HistoryParameter{
               / (1000l * 60l * 60l * 24l);
       if(days < min)
         min = days;
+    }
+    }finally{
+      if(cursor!=null)
+        cursor.close();
     }
 
     return Math.max(Math.min((int)min, MAX), MIN);

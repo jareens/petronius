@@ -66,7 +66,9 @@ public class CompatibilityParameter extends Parameter{
       
       CompatibilitiesFilter filter = new CompatibilitiesFilter();
       filter.setGarmentId(garment.getId());
-      Cursor cursor = dbHelper.fetchCompatibilityIds(filter);
+      Cursor cursor = null;
+      try{
+      cursor=dbHelper.fetchCompatibilityIds(filter);
       for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
         record=dbHelper.fetchCompatibility(cursor.getLong(0));
         if(record.matches(chosen[i].getId())){
@@ -74,6 +76,10 @@ public class CompatibilityParameter extends Parameter{
           count++;
           break;
         }
+      }
+      }finally{
+        if(cursor!=null)
+	  cursor.close();
       }
     }
     

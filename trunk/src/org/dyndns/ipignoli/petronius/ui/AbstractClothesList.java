@@ -100,6 +100,13 @@ public abstract class AbstractClothesList extends ListActivity{
   }
 
   @Override
+  protected void onPause(){
+    if(cursorAdapter != null)
+      cursorAdapter.getCursor().close();    
+    super.onPause();
+  }
+
+  @Override
   protected void onResume(){
     super.onResume();
     MyContext.initialize(this);

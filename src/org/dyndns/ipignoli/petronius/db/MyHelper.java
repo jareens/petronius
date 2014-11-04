@@ -259,8 +259,8 @@ public class MyHelper extends SQLiteOpenHelper{
   }
 
   public boolean updateHistory(long date){
-    return getWritableDatabase().delete(TABLE_HISTORY, F_HISTORY_DATE + "<" + date,
-        null) > 0;
+    return getWritableDatabase().delete(TABLE_HISTORY,
+        F_HISTORY_DATE + "<" + date, null) > 0;
   }
 
   private void deleteGarmentCompatibilities(long garmentId){
@@ -386,90 +386,112 @@ public class MyHelper extends SQLiteOpenHelper{
   }
 
   public Garment fetchGarment(long id) throws SQLException{
-    Cursor cursor =
-        getWritableDatabase().query(true, TABLE_CLOTHES, null,
-            F_CLOTHES_ID + "=" + id, null, null, null, null, null);
+    Cursor cursor = null;
+    try{
+      cursor =
+          getWritableDatabase().query(true, TABLE_CLOTHES, null,
+              F_CLOTHES_ID + "=" + id, null, null, null, null, null);
 
-    if(cursor == null)
-      return null;
+      if(cursor == null)
+        return null;
 
-    cursor.moveToFirst();
+      cursor.moveToFirst();
 
-    return new Garment(cursor.getLong(0), cursor.getString(1),
-        cursor.getInt(2), cursor.getInt(3), cursor.getLong(4),
-        cursor.getInt(5), cursor.getInt(6), (byte)cursor.getInt(7), cursor
-            .getInt(8), cursor.getInt(9) == 1 ? true : false, cursor.getLong(9));
+      return new Garment(cursor.getLong(0), cursor.getString(1), cursor
+          .getInt(2), cursor.getInt(3), cursor.getLong(4), cursor.getInt(5),
+          cursor.getInt(6), (byte)cursor.getInt(7), cursor.getInt(8), cursor
+              .getInt(9) == 1 ? true : false, cursor.getLong(9));
+    }finally{
+      if(cursor != null)
+        cursor.close();
+    }
   }
 
   public HistoryRecord fetchHistoryRecord(long id) throws SQLException{
-    Cursor cursor =
-        getWritableDatabase().query(true, TABLE_HISTORY, null,
-            F_HISTORY_ID + "=" + id, null, null, null, null, null);
+    Cursor cursor = null;
+    try{
+      cursor =
+          getWritableDatabase().query(true, TABLE_HISTORY, null,
+              F_HISTORY_ID + "=" + id, null, null, null, null, null);
 
-    if(cursor == null)
-      return null;
+      if(cursor == null)
+        return null;
 
-    cursor.moveToFirst();
+      cursor.moveToFirst();
 
-    return new HistoryRecord(cursor.getLong(0), cursor.getLong(1), cursor
-        .getLong(2));
+      return new HistoryRecord(cursor.getLong(0), cursor.getLong(1), cursor
+          .getLong(2));
+    }finally{
+      if(cursor != null)
+        cursor.close();
+    }
   }
 
   public Compatibility fetchCompatibility(long id) throws SQLException{
-    Cursor cursor =
-        getWritableDatabase().query(true, TABLE_COMPATIBILITIES, null,
-            F_COMPATIBILITIES_ID + "=" + id, null, null, null, null, null);
+    Cursor cursor = null;
+    try{
+      cursor =
+          getWritableDatabase().query(true, TABLE_COMPATIBILITIES, null,
+              F_COMPATIBILITIES_ID + "=" + id, null, null, null, null, null);
 
-    if(cursor == null)
-      return null;
+      if(cursor == null)
+        return null;
 
-    cursor.moveToFirst();
+      cursor.moveToFirst();
 
-    return new Compatibility(cursor.getLong(0), cursor.getLong(1), cursor
-        .getLong(2), cursor.getInt(3));
+      return new Compatibility(cursor.getLong(0), cursor.getLong(1), cursor
+          .getLong(2), cursor.getInt(3));
+    }finally{
+      if(cursor != null)
+        cursor.close();
+    }
   }
 
   public boolean existsHistoryRecord(GregorianCalendar date, Long garmentId){
-    Cursor cursor =
-        getWritableDatabase().query(
-            true,
-            TABLE_HISTORY,
-            null,
-            F_HISTORY_DATE + "=" + date.getTimeInMillis() + " AND "
-                + F_HISTORY_GARMENT_ID + " = " + garmentId, null, null, null,
-            null, null);
-
-    if(cursor == null)
-      return false;
-
+    Cursor cursor = null;
     try{
+      cursor =
+          getWritableDatabase().query(
+              true,
+              TABLE_HISTORY,
+              null,
+              F_HISTORY_DATE + "=" + date.getTimeInMillis() + " AND "
+                  + F_HISTORY_GARMENT_ID + " = " + garmentId, null, null, null,
+              null, null);
+
+      if(cursor == null)
+        return false;
+
       cursor.moveToFirst();
       return cursor.getCount() > 0;
     }finally{
-      cursor.close();
+      if(cursor != null)
+        cursor.close();
     }
   }
 
   public boolean existsCompatibility(Long garmentId1, Long garmentId2){
-    Cursor cursor =
-        getWritableDatabase().query(
-            true,
-            TABLE_COMPATIBILITIES,
-            null,
-            "( " + F_COMPATIBILITIES_GARMENT_ID_1 + "=" + garmentId1 + " AND "
-                + F_COMPATIBILITIES_GARMENT_ID_2 + "=" + garmentId2
-                + " ) OR ( " + F_COMPATIBILITIES_GARMENT_ID_1 + "="
-                + garmentId2 + " AND " + F_COMPATIBILITIES_GARMENT_ID_2 + "="
-                + garmentId1 + " )", null, null, null, null, null);
-
-    if(cursor == null)
-      return false;
-
+    Cursor cursor = null;
     try{
+      cursor =
+          getWritableDatabase().query(
+              true,
+              TABLE_COMPATIBILITIES,
+              null,
+              "( " + F_COMPATIBILITIES_GARMENT_ID_1 + "=" + garmentId1
+                  + " AND " + F_COMPATIBILITIES_GARMENT_ID_2 + "=" + garmentId2
+                  + " ) OR ( " + F_COMPATIBILITIES_GARMENT_ID_1 + "="
+                  + garmentId2 + " AND " + F_COMPATIBILITIES_GARMENT_ID_2 + "="
+                  + garmentId1 + " )", null, null, null, null, null);
+
+      if(cursor == null)
+        return false;
+
       cursor.moveToFirst();
       return cursor.getCount() > 0;
     }finally{
-      cursor.close();
+      if(cursor != null)
+        cursor.close();
     }
   }
 

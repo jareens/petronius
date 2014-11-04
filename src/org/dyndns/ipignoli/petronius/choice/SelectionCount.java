@@ -28,6 +28,7 @@ import org.dyndns.ipignoli.petronius.clothes.Garment;
 import org.dyndns.ipignoli.petronius.db.MyHelper;
 import org.dyndns.ipignoli.petronius.history.HistoryRecordFilter;
 import android.content.res.Resources;
+import android.database.Cursor;
 
 
 public class SelectionCount extends HistoryParameter{
@@ -44,7 +45,15 @@ public class SelectionCount extends HistoryParameter{
   protected int computeValue(){
     HistoryRecordFilter filter = new HistoryRecordFilter();
     filter.setGarmentId(garment.getId());
-    return Math.min(dbHelper.fetchHistoryRecordIds(filter).getCount(), MAX);
+
+    Cursor cursor = null;
+    try{
+      cursor = dbHelper.fetchHistoryRecordIds(filter);
+      return Math.min(cursor.getCount(), MAX);
+    }finally{
+      if(cursor != null)
+        cursor.close();
+    }
   }
 
   @Override
